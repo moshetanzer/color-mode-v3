@@ -4,9 +4,16 @@ const colorMode = useColorMode()
 
 <template>
   <div>
-    <ClientOnly>
-      <p>Current mode: {{ colorMode.value }}</p>
-    </ClientOnly>
+    <div>
+      Current mode:
+      <p class="color-status-dark">
+        Dark
+      </p>
+      <p class="color-status-light">
+        Light
+      </p>
+    </div>
+
     <p>Preference: {{ colorMode.preference }}</p>
 
     <button @click="colorMode.setColorMode('light')">
@@ -22,6 +29,18 @@ const colorMode = useColorMode()
 </template>
 
 <style>
+.color-status-dark,
+.color-status-light {
+  display: none;
+}
+
+html.dark-mode .color-status-dark {
+  display: inline;
+}
+
+html.light-mode .color-status-light {
+  display: inline;
+}
 .dark-mode {
   background-color: black;
   color: white;
